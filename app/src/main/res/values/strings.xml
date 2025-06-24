@@ -4,4 +4,10 @@
     <string name="title_grades">Grades</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
+    <string-array name="spinner_campus">
+        <item>Select your campus</item>
+        <item>HCM Campus</item>
+        <item>HN Campus</item>
+        <item>DN Campus</item>
+    </string-array>
 </resources>

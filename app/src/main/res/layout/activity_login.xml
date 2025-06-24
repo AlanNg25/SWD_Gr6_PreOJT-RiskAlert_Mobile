@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/logo_fap" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="FPT Education"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Label “Campus” -->
+    <TextView
+        android:id="@+id/labelCampus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Campus"
+        android:textSize="14sp" />
+
+    <!-- Campus Spinner -->
+        <Spinner
+            android:id="@+id/spinnerCampus"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/white_rounded_border"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:entries="@array/spinner_campus"
+            android:spinnerMode="dropdown" />
+
+    <!-- Google Sign-in Button -->
+    <Button
+        android:id="@+id/btnLoginGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/white_rounded_border"
+        android:backgroundTint="@null"
+        android:drawableLeft="@drawable/ic_google"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="16dp"
+        android:text="Sign in with Google"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+    <!-- Sign in with FEID Button -->
+    <Button
+        android:id="@+id/btnLoginFEID"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/green_rounded_button"
+        android:gravity="center"
+        android:text="Sign In With FEID"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+
+</LinearLayout>
