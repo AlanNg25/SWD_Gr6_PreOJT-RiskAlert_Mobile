@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
     private static final String TAG = "LoginGoogle";
     private AuthPresenter mAuthPresenter;
     private AuthApi mAuthApi;
+    private Button btnLoginFEID;
 
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -54,7 +55,24 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//
+//        SharedPreferences sharedPreferences = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+//        String token = sharedPreferences.getString("jwt_token", null);
+//        if (token != null && !token.isEmpty()) {
+//            // Token còn, chuyển vào MainActivity luôn
+//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//            startActivity(intent);
+//            finish(); // kết thúc LoginActivity
+//            return;
+//        }
+
         setContentView(R.layout.activity_login);
+
+        btnLoginFEID = findViewById(R.id.btnLoginFEID);
+        btnLoginFEID.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, LoginWithFEIDActivity.class);
+            startActivity(intent);
+        });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("787872542485-p0s5oomh4ddc38bjrouv6vsghh44oeut.apps.googleusercontent.com") // Web client ID
@@ -112,6 +130,16 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
     @Override
     public void onSignInFailure(String code, String errorMessage) {
         Log.d(TAG, "onSignInFailure: " + code + " - " + errorMessage);
+    }
+
+    @Override
+    public void onSignInByEmailSuccess(AuthResponse authResponse) {
+
+    }
+
+    @Override
+    public void onSignInByEmailFailure(String code, String errorMessage) {
+
     }
 }
 
