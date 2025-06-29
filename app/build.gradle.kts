@@ -10,6 +10,7 @@ android {
         applicationId = "com.example.preojt_riskalert_mobile"
         minSdk = 24
         targetSdk = 35
+
         versionCode = 1
         versionName = "1.0"
 
@@ -47,4 +48,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("androidx.browser:browser:1.6.0")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }

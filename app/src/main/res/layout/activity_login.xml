@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:padding="24dp">
 
-    <!-- Logo -->
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="150dp"
@@ -16,7 +15,6 @@
         android:layout_marginTop="40dp"
         android:src="@drawable/logo_fap" />
 
-    <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -26,7 +24,6 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <!-- Label “Campus” -->
     <TextView
         android:id="@+id/labelCampus"
         android:layout_width="wrap_content"
@@ -35,19 +32,18 @@
         android:text="Campus"
         android:textSize="14sp" />
 
-    <!-- Campus Spinner -->
-        <Spinner
-            android:id="@+id/spinnerCampus"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/white_rounded_border"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:entries="@array/spinner_campus"
-            android:spinnerMode="dropdown" />
+    <Spinner
+        android:id="@+id/spinnerCampus"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/white_rounded_border"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:entries="@array/spinner_campus"
+        android:spinnerMode="dropdown" />
 
-    <!-- Google Sign-in Button -->
+    <!-- Google OAuth2 login button (custom) -->
     <Button
         android:id="@+id/btnLoginGoogle"
         android:layout_width="match_parent"
@@ -63,7 +59,6 @@
         android:textColor="@android:color/black"
         android:textSize="16sp" />
 
-    <!-- Sign in with FEID Button -->
     <Button
         android:id="@+id/btnLoginFEID"
         android:layout_width="match_parent"
@@ -75,6 +70,4 @@
         android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
-
-
 </LinearLayout>
