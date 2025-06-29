@@ -55,16 +55,16 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//
-//        SharedPreferences sharedPreferences = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-//        String token = sharedPreferences.getString("jwt_token", null);
-//        if (token != null && !token.isEmpty()) {
-//            // Token còn, chuyển vào MainActivity luôn
-//            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish(); // kết thúc LoginActivity
-//            return;
-//        }
+
+        SharedPreferences sharedPreferences = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("jwt_token", null);
+        if (token != null && !token.isEmpty()) {
+            // Token còn, chuyển vào MainActivity luôn
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish(); // kết thúc LoginActivity
+            return;
+        }
 
         setContentView(R.layout.activity_login);
 
@@ -139,6 +139,16 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
 
     @Override
     public void onSignInByEmailFailure(String code, String errorMessage) {
+
+    }
+
+    @Override
+    public void onLogoutSuccess() {
+
+    }
+
+    @Override
+    public void onLogoutFailure(String code, String errorMessage) {
 
     }
 }

@@ -3,6 +3,7 @@ package com.example.preojt_riskalert_mobile.retrofit;
 import android.content.Context;
 
 import com.example.preojt_riskalert_mobile.api.AuthApi;
+import com.example.preojt_riskalert_mobile.api.ProfileApi;
 import com.example.preojt_riskalert_mobile.constants.Constant;
 
 import okhttp3.OkHttpClient;
@@ -26,5 +27,9 @@ public class RetrofitClient {
 
     public static AuthApi getAuthApi(Context context) {
         return getInstance(context).create(AuthApi.class);
+    }
+
+    public static ProfileApi getProfileApi(Context context) {
+        return getInstance(context).create(ProfileApi.class);
     }
 }

@@ -8,4 +8,7 @@ public interface AuthViewImpl {
 
     void onSignInByEmailSuccess(AuthResponse authResponse);
     void onSignInByEmailFailure(String code, String errorMessage);
+
+    void onLogoutSuccess();
+    void onLogoutFailure(String code, String errorMessage);
 }

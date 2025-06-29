@@ -15,4 +15,7 @@ public interface AuthApi {
 
     @POST(ConstantApi.SIGN_IN_EMAIL)
     Call<AuthResponse> loginWithEmail(@Body SignInByEmailRequest signInByEmailRequest); // Assuming the same request structure for email login
+
+    @POST(ConstantApi.LOG_OUT)
+    Call<Void> logout();
 }

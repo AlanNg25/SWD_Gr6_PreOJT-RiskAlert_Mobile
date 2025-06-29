@@ -7,4 +7,6 @@ public interface AuthPresenterImpl {
     void signInWithGoogle(SignInGoogleRequest signInGoogleRequest);
 
     void signInByEmail(SignInByEmailRequest signInByEmailRequest);
+
+    void logout();
 }

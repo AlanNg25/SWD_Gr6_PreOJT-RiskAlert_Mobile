@@ -75,4 +75,19 @@ public class AuthPresenter implements AuthPresenterImpl {
             }
         });
     }
+
+    @Override
+    public void logout() {
+        mAuthApi.logout().enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                mAuthView.onLogoutSuccess();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                mAuthView.onLogoutFailure("500", t.getMessage());
+            }
+        });
+    }
 }

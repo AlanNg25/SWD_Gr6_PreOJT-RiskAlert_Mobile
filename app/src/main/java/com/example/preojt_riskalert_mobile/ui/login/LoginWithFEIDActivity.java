@@ -91,4 +91,14 @@ public class LoginWithFEIDActivity extends AppCompatActivity implements AuthView
     public void onSignInByEmailFailure(String code, String errorMessage) {
         Toast.makeText(this, "Login failed: " + errorMessage, Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void onLogoutSuccess() {
+
+    }
+
+    @Override
+    public void onLogoutFailure(String code, String errorMessage) {
+
+    }
 }
