@@ -1,0 +1,129 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_white_bg"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/txtSubjectCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject Name"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000000" />
+
+        <!-- Row: Circle + Average -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_passed_circle"
+                android:gravity="center"
+                android:text="Passed"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Average:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtAverage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9.0"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Grade Table -->
+        <TableLayout
+            android:id="@+id/tableGradeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+
+            <!-- Header Row -->
+            <TableRow android:background="#263238">
+                <TextView
+                    android:text="Grade category"
+                    android:textColor="#FFFFFF"
+                    android:padding="8dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:text="Weight"
+                    android:textColor="#FFFFFF"
+                    android:padding="8dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:text="Value"
+                    android:textColor="#FFFFFF"
+                    android:padding="8dp"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+
+            <!-- Data rows sẽ thêm từ code (dynamically) -->
+
+        <!-- Total Row -->
+        <!-- Total Row -->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:stretchColumns="1">
+
+            <TableRow android:background="#E0E0E0">
+                <TextView
+                    android:text="Average"
+                    android:padding="8dp" />
+                <TextView />
+                <TextView
+                    android:id="@+id/txtTotalAverage"
+                    android:text="9.0"
+                    android:textStyle="bold"
+                    android:padding="8dp" />
+            </TableRow>
+
+            <TableRow android:background="#E0E0E0">
+                <TextView
+                    android:text="Status"
+                    android:padding="8dp" />
+                <TextView />
+                <TextView
+                    android:id="@+id/txtFinalStatus"
+                    android:text="Passed"
+                    android:textStyle="bold"
+                    android:textColor="@color/green"
+                    android:padding="8dp" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+</ScrollView>

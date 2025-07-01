@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Toolbar (ActionBar) -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -16,7 +15,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:title="Risk Alert App"
-        app:navigationIcon="@drawable/ic_menu" /> <!-- icon 3 chấm hoặc icon tùy bạn -->
+        app:navigationIcon="@drawable/ic_menu"
+        app:titleMarginTop="12dp" />
+    <!-- icon 3 chấm hoặc icon tùy bạn -->
 
 
     <!-- NavHostFragment -->

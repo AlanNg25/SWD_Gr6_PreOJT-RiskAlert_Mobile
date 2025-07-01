@@ -1,19 +1,47 @@
 package com.example.preojt_riskalert_mobile.ui.attendance;
 
-import androidx.lifecycle.LiveData;
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class AttendanceViewModel extends ViewModel {
+import com.example.preojt_riskalert_mobile.interfaces.attendance.AttendanceViewImpl;
+import com.example.preojt_riskalert_mobile.models.response.AttendanceResponse;
+import com.example.preojt_riskalert_mobile.presenters.AttendancePresenter;
 
-    private final MutableLiveData<String> mText;
+import java.util.List;
 
-    public AttendanceViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is attendance fragment");
+public class AttendanceViewModel extends AndroidViewModel implements AttendanceViewImpl {
+
+    private AttendancePresenter presenter;
+    private MutableLiveData<List<AttendanceResponse>> attendanceList = new MutableLiveData<>();
+    private MutableLiveData<String> error = new MutableLiveData<>();
+
+    public AttendanceViewModel(@NonNull Application application) {
+        super(application);
+        presenter = new AttendancePresenter(this, application.getApplicationContext());
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void loadAttendance(String userId) {
+        presenter.getAttendanceByUserId(userId);
+    }
+
+    public MutableLiveData<List<AttendanceResponse>> getAttendanceList() {
+        return attendanceList;
+    }
+
+    public MutableLiveData<String> getError() {
+        return error;
+    }
+
+    @Override
+    public void onAttendanceSuccess(List<AttendanceResponse> data) {
+        attendanceList.postValue(data);
+    }
+
+    @Override
+    public void onAttendanceFail(String message) {
+        error.postValue(message);
     }
 }

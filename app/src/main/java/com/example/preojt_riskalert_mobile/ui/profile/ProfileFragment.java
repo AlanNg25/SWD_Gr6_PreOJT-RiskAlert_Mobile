@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class ProfileFragment extends Fragment implements ProfileViewImpl, AuthVi
     private AuthPresenter authPresenter;
     private ProfileViewModel viewModel;
     private Button btnLogout;
-
+    private static final String TAG = "ProfileFragment";
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +72,7 @@ public class ProfileFragment extends Fragment implements ProfileViewImpl, AuthVi
         String token = prefs.getString("jwt_token", null);
         if (token != null) {
             String userId = JwtUtil.getSubFromToken(token);
+            Log.d(TAG, "onCreateView: " + token);
             profilePresenter.getProfileById(userId);
         }
 
