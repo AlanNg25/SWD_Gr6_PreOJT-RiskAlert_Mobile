@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.example.preojt_riskalert_mobile.R;
 import com.example.preojt_riskalert_mobile.databinding.FragmentProfileBinding;
 import com.example.preojt_riskalert_mobile.interfaces.auth.AuthViewImpl;
 import com.example.preojt_riskalert_mobile.interfaces.profile.ProfileViewImpl;
@@ -45,11 +46,11 @@ public class ProfileFragment extends Fragment implements ProfileViewImpl, AuthVi
         btnLogout = binding.btnLogout;
         btnLogout.setOnClickListener(v -> {
             // Xóa JWT khỏi SharedPreferences
-            SharedPreferences prefs = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.remove("jwt_token");
-            editor.apply();
-
+            SharedPreferences prefs = requireContext().getSharedPreferences(getString(R.string.shared_preference), (int) Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = prefs.edit();
+//            editor.remove(getString(R.string.jwt_token_name));
+//            editor.apply();
+            JwtUtil.RemoveJwtTokenFromSharedPreferences(prefs);
             // Hiển thị thông báo và chuyển
             authPresenter = new AuthPresenter(this, requireContext());
             authPresenter.logout();
@@ -81,10 +82,10 @@ public class ProfileFragment extends Fragment implements ProfileViewImpl, AuthVi
 
     private void displayProfile(ProfileResponse profile) {
         binding.tvFullName.setText(profile.getFullName());
-        binding.tvStudentInfo.setText("SE180321" + "Status: HD");
+        binding.tvStudentInfo.setText(profile.getCode() + " - " + "Status: HD");
         binding.tvEmail.setText(profile.getEmail());
 
-        Bitmap qrCodeBitmap = GenerateQRCodeUtil.generateQrCode("SE180321");
+        Bitmap qrCodeBitmap = GenerateQRCodeUtil.generateQrCode(profile.getCode());
         Glide.with(requireContext())
                 .load(qrCodeBitmap)
                 .into(binding.imgQrCode);

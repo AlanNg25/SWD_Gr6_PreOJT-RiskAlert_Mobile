@@ -24,6 +24,7 @@ import com.example.preojt_riskalert_mobile.models.request.SignInGoogleRequest;
 import com.example.preojt_riskalert_mobile.models.response.AuthResponse;
 import com.example.preojt_riskalert_mobile.presenters.AuthPresenter;
 import com.example.preojt_riskalert_mobile.retrofit.RetrofitClient;
+import com.example.preojt_riskalert_mobile.utils.JwtUtil;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -56,8 +57,8 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-        String token = sharedPreferences.getString("jwt_token", null);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.shared_preference), Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString(getString(R.string.jwt_token_name), null);
         if (token != null && !token.isEmpty()) {
             // Token còn, chuyển vào MainActivity luôn
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
         });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("787872542485-p0s5oomh4ddc38bjrouv6vsghh44oeut.apps.googleusercontent.com") // Web client ID
+                .requestIdToken(getString(R.string.client_id)) // Web client ID
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -119,9 +120,11 @@ public class LoginActivity extends AppCompatActivity implements AuthViewImpl {
     @Override
     public void onSignInSuccess(AuthResponse authResponse) {
         SharedPreferences sharedPreferences = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("jwt_token", authResponse.getToken()); // token là chuỗi JWT bạn nhận được từ backend
-        editor.apply();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("jwt_token", authResponse.getToken()); // token là chuỗi JWT bạn nhận được từ backend
+//        editor.apply();
+        JwtUtil.SaveJwtTokenToSharedPreferences(authResponse.getToken(), sharedPreferences);
+
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();

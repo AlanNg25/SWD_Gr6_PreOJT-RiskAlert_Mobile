@@ -1,5 +1,6 @@
 package com.example.preojt_riskalert_mobile.utils;
 
+import android.content.SharedPreferences;
 import android.util.Base64;
 
 import org.json.JSONException;
@@ -20,6 +21,18 @@ public class JwtUtil {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static void SaveJwtTokenToSharedPreferences(String jwtToken, SharedPreferences sharedPreferences) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("jwt_token", jwtToken);
+        editor.apply();
+    }
+
+    public static void RemoveJwtTokenFromSharedPreferences(SharedPreferences sharedPreferences) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("jwt_token");
+        editor.apply();
     }
 }
 

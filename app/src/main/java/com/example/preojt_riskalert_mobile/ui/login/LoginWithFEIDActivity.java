@@ -17,6 +17,7 @@ import com.example.preojt_riskalert_mobile.interfaces.auth.AuthViewImpl;
 import com.example.preojt_riskalert_mobile.models.request.SignInByEmailRequest;
 import com.example.preojt_riskalert_mobile.models.response.AuthResponse;
 import com.example.preojt_riskalert_mobile.presenters.AuthPresenter;
+import com.example.preojt_riskalert_mobile.utils.JwtUtil;
 
 public class LoginWithFEIDActivity extends AppCompatActivity implements AuthViewImpl {
 
@@ -78,10 +79,11 @@ public class LoginWithFEIDActivity extends AppCompatActivity implements AuthView
     public void onSignInByEmailSuccess(AuthResponse authResponse) {
         Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("jwt_token", authResponse.getToken()); // token là chuỗi JWT bạn nhận được từ backend
-        editor.apply();
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.shared_preference), Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("jwt_token", authResponse.getToken()); // token là chuỗi JWT bạn nhận được từ backend
+//        editor.apply();
+        JwtUtil.SaveJwtTokenToSharedPreferences(authResponse.getToken(), sharedPreferences);
         Intent intent = new Intent(LoginWithFEIDActivity.this, MainActivity.class);
         startActivity(intent);
         finish();

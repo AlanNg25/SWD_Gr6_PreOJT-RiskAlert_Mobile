@@ -8,6 +8,7 @@ public class ProfileResponse {
     public String role;
     public int status;
     public String createdAt;
+    public String code;
     public boolean isDeleted;
 
     public String getFullName() {
@@ -72,5 +73,13 @@ public class ProfileResponse {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

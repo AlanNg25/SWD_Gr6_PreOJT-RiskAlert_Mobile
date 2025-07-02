@@ -5,6 +5,9 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
     <string name="title_gradeDetail">Grade Detail</string>
+    <string name="client_id">787872542485-p0s5oomh4ddc38bjrouv6vsghh44oeut.apps.googleusercontent.com</string>
+    <string name="shared_preference">auth_prefs</string>
+    <string name="jwt_token_name">jwt_token</string>
     <string-array name="spinner_campus">
         <item>Select your campus</item>
         <item>HCM Campus</item>
