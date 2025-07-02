@@ -15,4 +15,6 @@ public class ConstantApi {
     // Grade related endpoints
     public static final String GET_ALL_GRADE= "Grade/by-user/{id}";
     public static final String GET_GRADE_DETAILS= "Grade/{id}";
+    // Notification related endpoints
+    public static final String GET_NOTIFICATION= "Notification/by-user/{id}";
 }

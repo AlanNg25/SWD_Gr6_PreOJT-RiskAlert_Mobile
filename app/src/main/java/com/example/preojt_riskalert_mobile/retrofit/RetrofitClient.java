@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.preojt_riskalert_mobile.api.AttendanceApi;
 import com.example.preojt_riskalert_mobile.api.AuthApi;
 import com.example.preojt_riskalert_mobile.api.GradeApi;
+import com.example.preojt_riskalert_mobile.api.NotificationApi;
 import com.example.preojt_riskalert_mobile.api.ProfileApi;
 import com.example.preojt_riskalert_mobile.constants.Constant;
 import com.google.gson.Gson;
@@ -62,5 +63,9 @@ public class RetrofitClient {
 
     public  static GradeApi getGradeApi(Context context) {
         return getInstance(context).create(GradeApi.class);
+    }
+
+    public static NotificationApi getNotificationApi(Context context) {
+        return getInstance(context).create(NotificationApi.class);
     }
 }

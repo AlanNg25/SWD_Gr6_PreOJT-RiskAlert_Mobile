@@ -1,5 +1,7 @@
 package com.example.preojt_riskalert_mobile.ui.grades;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import com.example.preojt_riskalert_mobile.adapter.GradeAdapter;
 import com.example.preojt_riskalert_mobile.databinding.FragmentGradesBinding;
 import com.example.preojt_riskalert_mobile.models.response.GradeResponse;
 import com.example.preojt_riskalert_mobile.ui.gradeDetails.GradeDetailFragment;
+import com.example.preojt_riskalert_mobile.utils.JwtUtil;
 
 import java.util.List;
 
@@ -45,7 +48,13 @@ public class GradeFragment extends Fragment {
                 Toast.makeText(getContext(), "Error: " + err, Toast.LENGTH_SHORT).show());
 
         // Trigger load (userId phải truyền từ SharedPreferences / arguments...)
-        gradeViewModel.loadGrades("afa69a5a-2317-4d4e-84a0-da3d22ccfffd");
+        SharedPreferences prefs = requireContext().getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+        String token = prefs.getString("jwt_token", null);
+        if (token != null) {
+            String userId = JwtUtil.getSubFromToken(token);
+            gradeViewModel.loadGrades(userId);
+        }
+
 
         return root;
     }
