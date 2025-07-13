@@ -1,15 +1,24 @@
 package com.example.preojt_riskalert_mobile;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.preojt_riskalert_mobile.databinding.ActivityMainBinding;
+import com.example.preojt_riskalert_mobile.services.NotificationCheckService;
+import com.example.preojt_riskalert_mobile.utils.JwtUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +31,17 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        String currentUserId = null;
+        SharedPreferences prefs = getSharedPreferences("auth_prefs", Context.MODE_PRIVATE);
+        String token = prefs.getString("jwt_token", null);
+        if (token != null) {
+            currentUserId = JwtUtil.getSubFromToken(token);
+        }
+
+        Intent intent = new Intent(this, NotificationCheckService.class);
+        intent.putExtra("userId", currentUserId); // truyền ID người dùng thật
+        ContextCompat.startForegroundService(this, intent);
 
 
         // Gắn toolbar làm ActionBar
