@@ -27,6 +27,7 @@ public class GradeDetailFragment extends Fragment {
 
     private FragmentGradeDetailBinding binding;
     private GradeDetailViewModel viewModel;
+    private double scoreAverage;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -56,8 +57,10 @@ public class GradeDetailFragment extends Fragment {
     private void bindData(GradeResponse grade) {
         if (grade != null) {
             binding.txtSubjectCode.setText(grade.getCourse().getCourseCode());
-            binding.txtAverage.setText("Average: " + grade.getScoreAverage());
-            if (grade.getScoreAverage()/10 >= 5.0) {
+            binding.txtAverage.setText(String.valueOf(grade.getScoreAverage()));
+            binding.txtTotalAverage.setText(String.valueOf(grade.getScoreAverage()));
+            scoreAverage = grade.getScoreAverage();
+            if (grade.getScoreAverage() >= 5.0) {
                 binding.txtStatus.setText("Passed");
                 binding.txtStatus.setTextColor(Color.parseColor("#2E7D32")); // Green
                 binding.txtStatus.setBackgroundResource(R.drawable.bg_passed_circle);
@@ -66,7 +69,6 @@ public class GradeDetailFragment extends Fragment {
                 binding.txtStatus.setTextColor(Color.RED);
                 binding.txtStatus.setBackgroundResource(R.drawable.bg_failed_circle);
             }
-            // Có thể thêm các binding khác tại đây
             renderGradeDetails(grade.getGradeDetails());
         }
     }

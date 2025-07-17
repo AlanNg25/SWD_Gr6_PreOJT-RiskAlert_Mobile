@@ -38,12 +38,12 @@ public class GradeAdapter extends RecyclerView.Adapter<GradeAdapter.GradeViewHol
     public void onBindViewHolder(@NonNull GradeViewHolder holder, int position) {
         GradeResponse grade = grades.get(position);
         holder.txtSubjectTitle.setText(grade.getCourse().getCourseCode());
-        holder.txtAverage.setText("Average: " + grade.getScoreAverage()/10);
+        holder.txtAverage.setText("Average: " + grade.getScoreAverage());
         holder.itemView.setOnClickListener(v -> {
             listener.onClick(grade.getGradeID()); // grade.getGradeID() phải là String
         });
 
-        if (grade.getScoreAverage()/10 >= 5.0) {
+        if (grade.getScoreAverage() >= 5.0) {
             holder.txtStatus.setText("Passed");
             holder.txtStatus.setTextColor(Color.parseColor("#2E7D32")); // Green
             holder.txtStatus.setBackgroundResource(R.drawable.bg_passed_circle);

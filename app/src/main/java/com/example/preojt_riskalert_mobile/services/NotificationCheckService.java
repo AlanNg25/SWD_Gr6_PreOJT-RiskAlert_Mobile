@@ -29,7 +29,7 @@ public class NotificationCheckService extends Service implements NotificationVie
 
     private static final String TAG = "NotificationCheckSvc";
     private static final String CHANNEL_ID = "notification_check_channel_v2";
-    private static final int INTERVAL_MS = 30000; // 30s
+    private static final int INTERVAL_MS = 10000; // 30s
     private static final int NOTIFICATION_ID = 1001;
 
     private Handler handler;
@@ -64,7 +64,7 @@ public class NotificationCheckService extends Service implements NotificationVie
         if (token != null) {
             currentUserId = JwtUtil.getSubFromToken(token);
         }
-
+        Log.d(TAG, "onStartCommand: " + currentUserId);
         String userIdFromIntent = intent.getStringExtra("userId");
         if (userIdFromIntent != null) {
             currentUserId = userIdFromIntent;
