@@ -115,7 +115,7 @@ public class NotificationCheckService extends Service implements NotificationVie
             // Cập nhật lại SharedPreferences
             sharedPrefs.edit().putInt("last_notification_count", lastNotificationCount).apply();
 
-            showUserNotification("Bạn có " + newCount + " thông báo mới: " + notifications.get(notifications.size() - 1).getContent());
+            showUserNotification("Bạn có " + newCount + " thông báo mới: " + notifications.get(1).getContent());
         }
     }
 
